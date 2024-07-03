@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Traffic Visualization</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        var data = [10, 20, 30, 40, 50];  // Example data
+        var width = 500;
+        var height = 500;
+
+        var svg = d3.select("#chart")
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+        svg.selectAll("rect")
+           .data(data)
+           .enter()
+           .append("rect")
+           .attr("x", (d, i) => i * 60)
+           .attr("y", d => height - d * 10)
+           .attr("width", 50)
+           .attr("height", d => d * 10)
+           .attr("fill", "blue");
+    </script>
+</body>
+</html>
